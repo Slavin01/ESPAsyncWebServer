@@ -1,0 +1,81 @@
+class BaseClass {
+    // Constructori pentru clasa de bază
+    public BaseClass() {
+        System.out.println("Constructorul implicit al clasei de bază.");
+    }
+
+    public BaseClass(String message) {
+        this();
+        System.out.println("Constructorul cu un mesaj pentru clasa de bază: " + message);
+    }
+
+
+    public BaseClass(int number) {
+        this("Număr: "+ number);
+        System.out.println("Constructorul cu un număr pentru clasa de bază: " + number);
+    }
+
+    // Metode pentru clasa de bază
+    public void method1() {
+        System.out.println("Metoda 1 din clasa de bază.");
+    }
+
+    public void method2() {
+        System.out.println("Metoda 2 din clasa de bază.");
+    }
+}
+
+class DerivedClass extends BaseClass {
+    // Constructori pentru clasa derivată
+    public DerivedClass() {
+        super("Apel din clasa derivată către constructorul cu mesaj al clasei de bază.");
+        System.out.println("Constructorul implicit al clasei derivată.");
+    }
+
+    public DerivedClass(String message) {
+        super(message);
+        System.out.println("Constructorul cu un mesaj pentru clasa derivată: " + message);
+    }
+
+    // Metode pentru clasa derivată
+    public void method3() {
+        System.out.println("Metoda 3 din clasa derivată.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        //int,float,long,char,double,String
+//        double number=1.2;
+//        char ch='a';
+//        String full="Daniel";
+        // Crearea obiectelor conform cerințelor
+        System.out.println("a) Obiectul clasei de bază folosind constructorul clasei de bază:");
+        BaseClass baseObject1 = new BaseClass();
+
+        System.out.println("\nb) Obiectul clasei derivate folosind constructorul clasei de bază:");
+        DerivedClass derivedObject1 = new DerivedClass();
+
+        System.out.println("\nc) Obiectul clasei derivate folosind constructorul clasei derivate:");
+        DerivedClass derivedObject2 = new DerivedClass("Mesaj pentru obiectul clasei derivate.");
+
+        System.out.println("\nd) Obiectul clasei de bază folosind constructorul clasei derivate:");
+        BaseClass baseObject2 = new DerivedClass();
+
+        // Apelarea metodelor cu obiectele create
+        System.out.println("\nApelarea metodelor cu obiectele create:");
+        baseObject1.method1();
+        baseObject1.method2();
+
+        derivedObject1.method1();
+        derivedObject1.method2();
+        derivedObject1.method3();
+
+        derivedObject2.method1();
+        derivedObject2.method2();
+        derivedObject2.method3();
+
+        baseObject2.method1();
+        baseObject2.method2();
+    }
+}
